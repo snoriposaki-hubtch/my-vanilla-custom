@@ -1,5 +1,5 @@
-name: Custom Vanilla Desktop # Replace this name with your image name
-id: custom # Replace this ID with your image ID
+name: my-custom-vanilla # Desktop # Replace this name with your image name
+id: my-custom-vanilla # Replace this ID with your image ID
 vibversion: 1.0.7
 
 stages:
@@ -31,6 +31,15 @@ stages:
     sources:
       - packages:
         - vim
+
+  - name: install-sway
+    type: shell
+    commands:
+      #  swaybarはswayに最初から含まれているため指定を省きます
+      #  --no-install-recommends を付けて無駄なエラーを防止します
+      - apt-get install -y --no-install-recommends sway swaybg xwayland
+      #  ランチャーはDebian環境と相性の良い wmenu（Wayland用）を安全に指定します
+      - apt-get install -y --no-install-recommends wmenu
 
   - name: example-commands # Sample module demonstrating the Shell module with custom commands
     type: shell
