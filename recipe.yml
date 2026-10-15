@@ -1,5 +1,5 @@
-name: Custom Vanilla Desktop # Replace this name with your image name
-id: custom # Replace this ID with your image ID
+name: my-custom-vanilla # Replace this name with your image name
+id: my-custom-vanilla # Replace this ID with your image ID
 vibversion: 1.0.7
 
 stages:
@@ -31,6 +31,19 @@ stages:
     sources:
       - packages:
         - vim
+
+  # ⬇️ ここから新しく追記する内容
+  - name: install-sway
+    type: apt
+    sources:
+      - packages:
+        - sway
+        - swaybg       # 壁紙設定用（推奨）
+        - swaybar      # ステータスバー（標準）
+        - alacritty    # ターミナル（Swayの標準デフォルト）
+        - dmenu        # ランチャー（または wofi など）
+        - xwayland     # X11アプリを動かす場合に必要（推奨）
+  # ⬆️ ここまで追記
 
   - name: example-commands # Sample module demonstrating the Shell module with custom commands
     type: shell
